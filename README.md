@@ -35,3 +35,39 @@ cd Data-Link-Handover
 pip install -r requirements.txt
 ```
 
+### 2. Configure Mission Planner SITL
+
+* Open Mission Planner
+* Go to Simulation, choose Multirotor, and select Model. Allow the simulation to fuilly initialize.
+* Open the developer utilities by pressing `Ctrl + F`, then click Mavlink.
+* Configure the first row of the bridge table:
+	- **Type:** `TCP`
+	- **Direction:** `Inbound`
+	- **Port:** `14556`
+	- **Host/Baud:** mirror 14556
+	- **Write:** [X] (Checked - critical for pass-through commands)
+* Click Go (status much change to Started).
+
+### 3. ArduPilot Parameter tweaks
+
+To prevent false disarms during ground testing or packet jitters:
+
+- Navigate to Config -> Full Parameters List.
+- Set `FS_THR_Enable` to `0` (Disables RC throttle failsafe disarm during testing).
+- Click Write params.
+
+### 4. Run the Injection Script
+
+Connect your receiver via FTDI and run:
+
+```bash
+python src/sitl_injector.py
+```
+
+### 5. Arm & Fly
+
+* Switch to Mission Planner's Flight Data view.
+* In the bottom-left **Actions** tab, set the flight mode to **Stabilize** and click **Set Mode**.
+* Arm via sticks (Throttle down + Yaw right for 3s) or right-click the map -> **Arm/Disarm** -> **Force Arm**.
+* Throttle up on your physical transmitter to control the virtual aircraft.
+
