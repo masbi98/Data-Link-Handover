@@ -1,0 +1,36 @@
+** Drc report for Receiver-for-data-link-uav.kicad_pcb **
+** Created on 2026-09-14T01:27:05 **
+** Report includes: Errors **
+
+** Found 3 DRC violations **
+[items_not_allowed]: Items not allowed
+    Local override; error
+    @(143.3750 mm, 73.4700 mm): Track [/WIFI] on F.Cu, length 1.9050 mm
+[starved_thermal]: Thermal relief connection to zone incomplete (layer In1.Cu; zone min spoke count 2; actual 1)
+    Local override; error
+    @(140.0200 mm, 59.9900 mm): Zone [GND] on In1.Cu, priority 0
+    @(141.2000 mm, 85.1700 mm): PTH pad 1 [GND] of TP4
+[starved_thermal]: Thermal relief connection to zone incomplete (layer In1.Cu; zone min spoke count 2; actual 1)
+    Local override; error
+    @(140.0200 mm, 59.9900 mm): Zone [GND] on In1.Cu, priority 0
+    @(140.0000 mm, 85.6700 mm): PTH pad 1 [GND] of TP4
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Silkscreen clearance
+    - Silkscreen clipped by solder mask
+    - Silkscreen clipped by board edge
+    - Text height out of range
+    - Text thickness out of range
+    - PTH inside courtyard
+    - NPTH inside courtyard
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **

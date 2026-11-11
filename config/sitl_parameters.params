@@ -1,0 +1,3 @@
+# Gamuda Technologies - ExpressLRS SITL Bridge
+# Disables RC throttle failsafe to prevent auto-disarm during network injection gaps
+FS_THR_ENABLE, 0

@@ -9,19 +9,7 @@ An ultra-low-latency hardware-in-the-loop (HIL) telemetry bridge developed durin
 
 ## 📌 Project Overview and Architecture
 
-+---------------------+         2.4GHz ELRS         +------------------------+
-|  RadioMaster T8L    |  >    |  ExpressLRS Receiver   |
-|     Transmitter     |                             |  (Serial Output)       |
-+---------------------+                             +------------------------+
-|
-| UART / FTDI (COM6)
-| 460,800 baud
-v
-+---------------------+         TCP Socket          +------------------------+
-| Mission Planner     |  <    | Python Injection Proxy |
-| SITL Simulation     |       Port: 14556           | (sitl_injector.py)   |
-| (Target: 1, Comp: 0)|                             | (GCS System ID: 255)   |
-+---------------------+                             +------------------------+
+![Simple overview of this repository](images/simple-project-overview.jpg)
 
 ---
 
@@ -45,3 +33,5 @@ Clone the repository and install dependencies:
 git clone [https://github.com/masbi98/Data-Link-Handover.git]
 cd Data-Link-Handover
 pip install -r requirements.txt
+```
+
