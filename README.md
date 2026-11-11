@@ -86,3 +86,17 @@ python src/sitl_injector.py
 	- Fixes: Disabled internal failsafes (`FS_THR_ENABLE` to `0`) and changed raw signal tracking to asynchronous event-based pass-through triggers. No artificial delays are used, creating immediate, non-blocking control feedback.
 
 ---
+
+## 🛠️ Custom PCB Design
+
+This repo includes a custom-designed Printed Circuit Board (PCB) to handle the hardware routing between the ExpressLRS receiver, the microcontroller, and the power delivery systems.\
+
+* **EDA Software:** KICAD
+* **Layer Count:** 4 Layer Impedance-controlled stackup
+* **Key Features:**
+	- Dedicated UART routing for 460,800 baud telemetry lines.
+	- Clean power delivery/filtering for the 2.4GHz RF module.
+	- Broken-out programming header for flight controller firmware flashing.
+* **Manufacturing:** The Zip file that is in the /hardware folder is used, and sent to JLCPCB. file name "Datalink Transceiver PCB files.zip"
+
+---
