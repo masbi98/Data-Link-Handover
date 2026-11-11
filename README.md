@@ -58,7 +58,7 @@ To prevent false disarms during ground testing or packet jitters:
 
 ### 4. Run the Injection Script
 
-Connect your receiver via FTDI and run:
+Connect your receiver via FTDI and run (Assuming your working directory is already inside this repository):
 
 ```bash
 python src/sitl_injector.py
@@ -71,3 +71,18 @@ python src/sitl_injector.py
 * Arm via sticks (Throttle down + Yaw right for 3s) or right-click the map -> **Arm/Disarm** -> **Force Arm**.
 * Throttle up on your physical transmitter to control the virtual aircraft.
 
+---
+
+## 🦾 Troubleshooting Reference (System Failures Handled)
+
+* Failed Connection/socket crashes (only one usage of socket address):
+	- Causes: Background task ghosting on port `14555` or unclosed TCP relays.
+	- Fixes: We routed standard connection ports exclusively onto unused port `14556`. When issues persist, kill tasks by hitting `Ctrl + C` and reboot Mission Planner to refresh system socket configurations.
+* SITL parameter collection failures (No Heartbeat received):
+	- Causes: Bridge logic crashing due to trying to map standard downloads inside Mission Planner.
+	- Fixes: Never touch the main Mission Planer Connect button! Start SITL and connect directly using the internal bridge routing to communicate natively via GCS authentication (source_system=255).
+* Uncontrolled random disarming:
+	- Causes: Safety timeout failsafes and telemetry drops.
+	- Fixes: Disabled internal failsafes (`FS_THR_ENABLE` to `0`) and changed raw signal tracking to asynchronous event-based pass-through triggers. No artificial delays are used, creating immediate, non-blocking control feedback.
+
+---
